@@ -289,7 +289,7 @@
         type: string
         description: dataset.yaml path
       - name: source
-        default: azure://depprocureformstorage/raspberry-data/20231115113709_captured_image.jpg
+        default: datum://018bd270-f3d1-d827-46ff-ea6c548c4032
         type: string
         description: dataset path
       - name: project
