@@ -265,3 +265,34 @@
         default: /valohai/outputs/
         type: string
         description: save to project/name
+
+- step:
+    name: detect-images
+    image: ultralytics/yolov5
+    environment: aws-eu-west-1-p2-xlarge
+    command:
+      - pip install valohai-utils 
+      - python detect.py {parameters}
+    inputs:
+      - name: datasets
+        default:
+          - https://valohai-examples.s3.eu-west-1.amazonaws.com/yolo-samples/coco128.tar
+      - name: model
+        default: datum://production-model
+    parameters:
+      - name: weights
+        default: /valohai/inputs/model/yolov5m.pt
+        type: string
+        description: model weights
+      - name: data
+        default: datasets/coco128.yaml
+        type: string
+        description: dataset.yaml path
+      - name: source
+        default: azure://depprocureformstorage/raspberry-data/*.jpg
+        type: string
+        description: dataset path
+      - name: project
+        default: /valohai/outputs/
+        type: string
+        description: save to project/name
